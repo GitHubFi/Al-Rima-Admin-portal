@@ -55,6 +55,7 @@ const initialState = {
     notification: null,
     USEROBJECT: null,
     Bill: null,
+    paymentObject:null
 
 
 }
@@ -155,6 +156,13 @@ export default (state = initialState, action) => {
 
         case ActionTypes.GET_Bill_PROGRESS:
             return { ...state, isProgress: true }
+
+
+            case ActionTypes.GET_USER_PAYMENT_OBJECT:
+            return { ...state, 
+                paymentObject: action.payload}
+
+           
 
 
         default:

@@ -60,7 +60,7 @@ class Service extends Component {
         return (
 
             <div >
-                <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10 }}>Requested Service List</Header>
+                <Header as='h1' style={{ paddingTop: 60, paddingLeft: 10 }}>Requested Service List</Header>
                 <Divider inverted />
                 <Grid divided='vertically'
                     style={{ paddingLeft: 10, paddingRight: 10 }}>
@@ -71,75 +71,105 @@ class Service extends Component {
                             this.props.userListComponent !== null ?
                                 this.props.userListComponent.map((data, index) =>
                                     <Grid.Column key={index}>
-                                        <Card >
-
-                                            <Card.Content style={{ backgroundColor: '#dfdada', padding: 20, fontWeight: 'bold' }}>
-
-                                                <Container>
-                                                    <Message.Item>
-
-                                                        Address: {data.address}
-                                                    </Message.Item>
-                                                </Container>
-                                                <Container>
-                                                    <Message.Item>
-
-                                                        Date:{data.chosenDate}
-                                                    </Message.Item>
-                                                </Container>
-                                                <Container>
-                                                    <Message.Item>
-                                                        Description: {data.description}
-                                                    </Message.Item>
-                                                </Container>
-                                                <Container>
-                                                <Message.Item>
-                                                Service: {data.serviceRequired}
-                                                </Message.Item>
+                                        <Card
+                                            style={{
+                                                boxShadow: '0 10px 15px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.25)',
+                                                fontSize:12
                                                 
-                                                
-                                                    </Container>
-                                                    <Container>
-                                                <Message.Item>
-                                                Hose No: {data.houseNo}
-                                                </Message.Item>
-                                                
-                                                 
-                                                    </Container>
+                                            }}
+                                        >
 
-                                                    <Container>
-                                                <Message.Item>
-                                                Phone Number: {data.pNumber}
-                                                </Message.Item>
-                                                
-                                                 
-                                                    </Container>
-                                                    <Container>
-                                                <Message.Item>
-                                                Time Slot: {data.timeSlot}
-                                                </Message.Item>
-                                                
-                                                 
-                                                    </Container>
+                                            <Card.Content style={{
+                                                backgroundColor: '#f6f6f6', padding: 16,
+                                                // fontWeight: 'bold',
+                                            }}>
+
+                                                <Container style={{padding:2}}>
+                                                    <Message>
+                                                        <text style={{fontWeight: 'bold'}}>
+                                                        Address: 
+                                                        </text>
                                                     
-                                               
+                                                        {" "} { data.address}
+                                                    </Message>
+                                                    
+                                                </Container>
+                                                <Container style={{padding:2}}>
+                                                    <Message>
+                                                    <text style={{fontWeight: 'bold'}}>
+                                                        Date: 
+                                                    </text>
+                                                    {" "} {data.chosenDate}
+                                                    </Message>
+                                                </Container>
+                                                <Container style={{padding:2}}>
+                                                    <Message>
+                                                    <text style={{fontWeight: 'bold'}}>
+                                                        Description: 
+                                                        </text>
+                                                        {" "}  {data.description}
+                                                    </Message>
+                                                </Container>
+                                                <Container style={{padding:2}}>
+                                                    <Message>
+                                                    <text style={{fontWeight: 'bold'}}>
+                                                        Service: {data.serviceRequired}
+                                                        </text>
+                                                        {" "}    {data.serviceRequired}
+                                                    </Message>
+
+
+                                                </Container>
+                                                <Container style={{padding:2}}>
+                                                    <Message>
+                                                    <text style={{fontWeight: 'bold'}}>
+                                                        Hose No: 
+                                                        </text>
+                                                        {" "} {data.houseNo}
+                                                    </Message>
+
+
+                                                </Container>
+
+                                                <Container style={{padding:2}}>
+                                                    <Message>
+                                                    <text style={{fontWeight: 'bold'}}>
+                                                        Phone Number: 
+                                                        </text>
+                                                        {" "} {data.pNumber}
+                                                    </Message>
+
+
+                                                </Container>
+                                                <Container style={{padding:2}}>
+                                                    <Message>
+                                                    <text style={{fontWeight: 'bold'}}>
+                                                        Time Slot: 
+                                                        </text>
+                                                        {" "}  {data.timeSlot}
+                                                    </Message>
+
+
+                                                </Container>
+
+
 
                                             </Card.Content>
 
                                         </Card>
                                     </Grid.Column>
                                 )
-                                :   
+                                :
 
-                                  
 
-                                        <Container>
-                                            <Message.Item>
 
-                                              No data found
+                                <Container>
+                                    <Message.Item>
+
+                                        Connection Failed
                                             </Message.Item>
-                                        </Container>
-                                      
+                                </Container>
+
 
                         }
                     </Grid.Row>

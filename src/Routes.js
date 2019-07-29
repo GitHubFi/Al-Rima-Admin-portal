@@ -48,14 +48,19 @@ export default class Routes extends Component {
                     width:"110%",
                     marginTop:5,
                     marginLeft:-22,
+                    // backgroundRepeat: "repeat-x",
+                    backgroundAttachment: "fixed"
+
+                    // display: 'inline-block',
                     // paddingRight:"20%",
                     // paddingRight:-20,
                     // backgroundPosition: "center",
                     // backgroundRepeat: "repeat-x",
                     // backgroundRepeat:'repeat-y',
+                    // backgroundAttachment:"fixed",
                     // backgroundRepeat:'no-repeat',
             
-                    backgroundSize: "cover"
+                    // backgroundSize: "cover"
                     
                     // backgroundSize: "cover",
                     // backgroundRepeat: 'no-repeat',

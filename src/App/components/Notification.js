@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Header, Divider, Card, Icon, Grid, Text, CardContent, CardDescription, Input, Container,Label } from 'semantic-ui-react';
+import { Header, Divider, Card, Icon, Grid, Text, CardContent, CardDescription, Input, Container,Label,Form, TextArea } from 'semantic-ui-react';
 import { createNotificationAction } from '../../store/action'
 
 
@@ -74,8 +74,8 @@ class Notification extends Component {
 
         return (
             <div>
-                <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10}}>
-                  Add Notifications
+                <Header as='h1' style={{ paddingTop: 60, paddingLeft: 10}}>
+                Broadcast Notifications
                 </Header>
                 <Divider inverted />
                 <Grid divided='vertically'
@@ -83,7 +83,11 @@ class Notification extends Component {
                     <Grid.Row columns={3}>
 
                         <Grid.Column>
-                            <Card>
+                            <Card 
+                              style={{
+                                boxShadow: '0 10px 15px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.25)'
+                            }}
+                            > 
                             <Label>
                                 Enter Heading
                                     
@@ -94,34 +98,53 @@ class Notification extends Component {
                                 {/* Add Information */}
                                 {/* </Card.Content> */}
                                 <div className="ui focus input">
-                                    <input type="text" placeholder="Enter notification..."
+                                    <input type="text" placeholder="Enter Notification Name..."
                                         onChange={this.handleInputChange}
                                         value={this.state.Notification1}
                                         style={{ padding: 10 }}
 
                                     /></div>
 
+
                             </Card>
                             <Card>
 
                                 <Label>Enter Content</Label>
 
-                                <div className="ui focus input">
+                                {/* <div className="ui focus input">
                                     <input type="text" placeholder=" Enter notification..."
                                         onChange={this.handleInputChange1}
                                         value={this.state.Notification2}
 
-                                        style={{ padding: 10 }} /></div>
+                                        style={{ padding: 10 }} /></div> */}
+
+                                        
+                                <Form>
+                                 <TextArea placeholder='Enter Notification Content...'
+                                  onChange={this.handleInputChange1}
+                                  value={this.state.Notification2}
+                                  style={{ padding: 10 }} />
+
+                                </Form>
+
                             </Card>
                             <Card>
                                 <Label>Enter Detail</Label>
 
 
-                                <div className="ui focus input">
+                                {/* <div className="ui focus input">
                                     <input type="text" placeholder="Enter notification..."
                                         onChange={this.handleInputChange2}
                                         value={this.state.Notification3}
-                                        style={{ padding: 10 }} /></div>
+                                        style={{ padding: 10 }} /></div> */}
+
+                                    <Form>
+                                 <TextArea placeholder='Enter Notification Detail...'
+                                  onChange={this.handleInputChange2}
+                                  value={this.state.Notification3}
+                                  style={{ padding: 10 }} />
+
+                                </Form>
 
                             </Card>
 

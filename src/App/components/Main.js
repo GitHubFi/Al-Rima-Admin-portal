@@ -1,47 +1,22 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
-import { Header, Divider, Card, Icon, Grid, GridRow, Button, Modal, Form, Container } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { createCustomerAction, getUserList ,GetAllNotification} from '../../store/action'
-// const optionsSex = [
-//     { key: 'm', text: 'Male', value: 'male' },
-//     { key: 'f', text: 'Female', value: 'female' },
-// ]
+import { Header, Divider, Card, Grid,
+    
+    Group,
+    Button , Image, Placeholder
 
-// const optionCountry = [
-//     {
-//         key: 'pk', text: 'Pakistan', value: 'pakistan'
-//     },
-//     {
-//         key: 'af', text: 'Afghanistan', value: 'afghanistan'
-//     }, {
-//         key: 'iq', text: 'Iraq', value: 'iraq'
-//     }, {
-//         key: 'qa ', text: 'Qatar', value: 'qatar'
-//     }, {
-//         key: 'sa', text: 'Saudi Arabia', value: 'saudi arabia'
-//     }, {
-//         key: 'sd', text: 'Sudan', value: 'sudan'
-//     }, {
-//         key: 'lk', text: 'Srilanka', value: 'srilanka'
-//     }, {
-//         key: 'ch', text: 'Switzerland', value: 'switzerland'
-//     },
-// ]
-// const optionInstallment = [
-//     {
-//         key: 'true', text: 'True', value: 'true'
-//     },
-//     {
-//         key: 'false', text: 'False', value: 'false'
-//     },
-// ]
+} from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { createCustomerAction, getUserList, GetAllNotification } from '../../store/action'
+
+
 
 class Main extends Component {
     constructor() {
         super();
         this.state = {
-            nameArray: ''
+            nameArray: '',
+           
         }
 
     }
@@ -56,23 +31,25 @@ class Main extends Component {
     }
 
     render() {
-
+     
         return (
 
             <div >
-                <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10 }}>Dashboard</Header>
+                <Header as='h1' style={{  paddingTop: 60, paddingLeft: 10 }}>Dashboard</Header>
                 <Divider inverted />
                 <Grid divided='vertically'
                     style={{ paddingLeft: 10, paddingRight: 10 }}>
 
 
                     <Grid.Row columns={3}>
-                       
-                                    <Grid.Column >
-                                        <Card >
 
-                                            <Card.Content style={{ backgroundColor: '#dfdada', padding: 30, fontWeight: 'bold' }}>
-{/* 
+                        <Grid.Column >
+                            <Card style={{
+                                boxShadow: '0 10px 15px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.25)'
+                            }}>
+
+                                <Card.Content style={{ backgroundColor: '#f6f6f6', padding: 30, fontWeight: 'bold' }}>
+                                    {/* 
                                                 <Container>Address: </Container>
                                                 <Container>Date:</Container>
                                                 <Container>Description:</Container>
@@ -82,16 +59,20 @@ class Main extends Component {
                                                 <Container>Time Slot: </Container>
                                                 <Container>User ID:</Container> */}
 
-                                            </Card.Content>
+                                </Card.Content>
 
-                                        </Card>
-                                    </Grid.Column>
-                               
-                
+                            </Card>
+                        </Grid.Column>
+
+
                     </Grid.Row>
                 </Grid>
 
-               
+
+      
+       
+
+
 
 
             </div>
@@ -102,20 +83,20 @@ class Main extends Component {
 function mapStateToProps(state) {
     console.log("REGISTER USER LIST", state.reducer.registerUserList);
     console.log("REGISTER USER SERVICES LIST", state.reducer.serviceList);
-    console.log(state.reducer.notification,"++++++++++++++++state.reducer.notification+++++++++++++++++++")
+    console.log(state.reducer.notification, "++++++++++++++++state.reducer.notification+++++++++++++++++++")
 
 
     return {
         userListComponent: state.reducer.serviceList,
         List: state.reducer.registerUserList,
-        notification:state.reducer.notification
+        notification: state.reducer.notification
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
         createCustomerComponent: (obj) => dispatch(createCustomerAction(obj)),
         getUserListComponent: () => dispatch(getUserList()),
-        getAllNotification:()=>dispatch(GetAllNotification())
+        getAllNotification: () => dispatch(GetAllNotification())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

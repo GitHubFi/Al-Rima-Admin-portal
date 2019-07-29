@@ -8,9 +8,9 @@ export default class TopNavBar extends Component {
     render() {
         const { activeItem } = this.state
         return (
-            <Menu size='large'>
-                <Menu.Menu position='left'>
-                    <Header as='h3' style={{ paddingTop: 10, paddingLeft: 10 }}>
+            <Menu size='large'   fixed="top" >
+                <Menu.Menu >
+                    <Header as='h3' style={{ paddingTop: 10, paddingLeft: 260, paddingBottom:5 }}>
                         <img src={require('../../assets/logoB.png')} alt="loading..." style={{ width: 100 }} />
                     </Header>
                 </Menu.Menu>

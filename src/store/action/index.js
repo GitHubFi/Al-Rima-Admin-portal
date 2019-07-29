@@ -100,6 +100,7 @@ export function createPaymentAction() {
 
             // let array = [];
             let array = [];
+            let ObjDAta=[]
 
             userListKeys.map(i => {
                 if (userList[i].userPaymentData) {
@@ -108,14 +109,20 @@ export function createPaymentAction() {
                         cvc: userList[i].userPaymentData.cvc,
                         date: userList[i].userPaymentData.date,
                         user: userList[i].userPaymentData.user,
-                        rent1:userList[i].userPaymentData.RentforoneBed,
-                        name:userList[i].userPaymentData.name
+                        rent1: userList[i].userPaymentData.RentforoneBed,
+                        name: userList[i].userPaymentData.name
                     }
 
                     array.push(obj);
+                    ObjDAta.push(obj.rent1)
+                    
+
                     console.log(array);
                 }
+
             })
+           
+            dispatch(getPaymentObject(ObjDAta))
             dispatch(getUserPaymenmtSuccesss(array))
             console.log("PAYTE<ERER", array);
         })
@@ -123,7 +130,12 @@ export function createPaymentAction() {
     }
 }
 
-
+function getPaymentObject(data) {
+    return {
+        type: ActionTypes.GET_USER_PAYMENT_OBJECT,
+        payload: data
+    }
+}
 function getUserPaymenmtSuccesss(data) {
     return {
         type: ActionTypes.GET_USER_PAYMENT_SUCCESSs,
@@ -157,18 +169,19 @@ export function createUtilityPaymentAction() {
                         cvc: userList[i].userPaymentData.cvc,
                         date: userList[i].userPaymentData.date,
                         user: userList[i].userPaymentData.user,
-                        rent1:userList[i].userPaymentData.RentforoneBed,
-                        name:userList[i].userPaymentData.name,
-                        payment:userList[i].userPaymentData.payment,
-                        paid:userList[i].userPaymentData.paid
+                        rent1: userList[i].userPaymentData.RentforoneBed,
+                        name: userList[i].userPaymentData.name,
+                        payment: userList[i].userPaymentData.payment,
+                        paid: userList[i].userPaymentData.paid,
+                        id: userList[i].userPaymentData.id
                     }
 
                     array.push(obj);
-                    console.log(array);
+                    console.log("IMAZZZ", array);
                 }
             })
             dispatch(getUtilityPaymenmtSuccesss(array))
-            console.log("PAYTE<ERER", array);
+            console.log("PAYTE<IMAZ", array);
         })
 
     }
@@ -422,7 +435,8 @@ export function createBillAction(bill) {
         let updates = {};
         let addUser = {
 
-            bill
+            bill,
+            addId
 
         }
         updates[
@@ -451,18 +465,21 @@ export function BillAction() {
             let userList = snapshot.val(),
                 userListKeys = Object.keys(userList);
 
+
             let arrList = [];
             userListKeys.map(i => {
                 if (userList[i]) {
                     let obj = {
-                        Notification1:userList[i].bill.Notification1,
-                        Notification2:userList[i].bill.Notification2,
-                        Notification3:userList[i].bill.Notification3,
-                        userId:userList[i].bill.userId,
-                        name:userList[i].bill.name,
-                        email:userList[i].bill.email,
-                        type:userList[i].bill.type,
-                        paid:userList[i].bill.paid
+                        Notification1: userList[i].bill.Notification1,
+                        Notification2: userList[i].bill.Notification2,
+                        Notification3: userList[i].bill.Notification3,
+                        userId: userList[i].bill.userId,
+                        name: userList[i].bill.name,
+                        email: userList[i].bill.email,
+                        type: userList[i].bill.type,
+                        paid: userList[i].bill.paid,
+                        id: userList[i].addId
+
 
                         // userServices: Object.values(userList[i].userServices)
                     }

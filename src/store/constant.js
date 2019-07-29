@@ -44,6 +44,9 @@ const ActionTypes = {
     GET_Bill_PROGRESS: "GET_Bill_PROGRESS",
     GET_Bill_SUCCESS: "GET_Bill_SUCCESS",
 
+
+    GET_USER_PAYMENT_OBJECT:"GET_USER_PAYMENT_OBJECT"
+
 };
 
 

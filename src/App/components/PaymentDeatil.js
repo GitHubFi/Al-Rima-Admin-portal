@@ -13,6 +13,16 @@ import { Header, Divider, Card, Icon, Grid, Text, CardContent, Container, CardDe
 
 
 class PaymentDetail extends Component {
+    constructor() {
+        super();
+        this.state = {
+            id: null,
+            array: null,
+            pending: 'pending',
+            payment: 'Paid',
+            Bill: null
+        }
+    }
 
     componentWillMount() {
         this.props.getPaymentDetail();
@@ -20,27 +30,18 @@ class PaymentDetail extends Component {
         this.props.meraj();
 
         this.props.getUserListComponent();
-       
-        // if (this.props.utilityPaymentList !== null) {
-        //     let array = this.props.utilityPaymentList.reduce((acc, cur) => {
-        //         return acc + cur.rent1
-        //     }, 0)
-        //     console.log(array);
-        //     this.setState({
-        //         array: array
-        //     })
 
-        // } else {
-        //     console.log("error")
-        // }
 
 
     }
+
+
     render() {
+        console.log(this.state.Bill)
         return (
             <div>
-                <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10 }}>
-                    Payment Detail
+                <Header as='h1' style={{ paddingTop: 60, paddingLeft: 10 }}>
+                    Payment Details
                 </Header>
                 <Divider inverted />
                 <Grid divided='vertically'
@@ -51,49 +52,78 @@ class PaymentDetail extends Component {
                                 this.props.paymentDetail.map((data, index) =>
 
                                     <Grid.Column key={index}>
-                                        <Card >
+                                        <Card
 
-                                            <Card.Content style={{ backgroundColor: '#dfdada', padding: 30, fontWeight: 'bold' }}>
+                                            style={{
+                                                boxShadow: '0 10px 15px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.25)'
+                                            }}
+                                        >
 
-                                                <Container>
-                                                    <Message.Item>
+                                            <Card.Content style={{ backgroundColor: '#f6f6f6', padding: 30 }}>
+                                                <Message>
+                                                    <Header as='h4' style={{ color: "#000" }}>
+                                                        Rent For One Bed
+                                            <Container style={{ fontSize: 10, fontStyle: 'italic' }}>
 
-                                                        User Name: {data.name}
-                                                    </Message.Item>
-                                                </Container>
-                                                <Container>
-                                                    <Message.Item>
+                                                            <text >( Saudi Riyal )</text>
+                                                        </Container>
+                                                    </Header>
 
-                                                        CVC Number: {data.cvc}
-                                                    </Message.Item>
-                                                </Container>
-                                                <Container>
-                                                    <Message.Item>
+                                                    <Divider />
 
-                                                        Card Number: {data.cardNumber}
-                                                    </Message.Item>
-                                                </Container>
+                                                    <Container>
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                User Name:
+                                                        </text>
+                                                            {" "}  {data.name}
+                                                        </Message.Item>
+                                                    </Container>
+                                                    <Container>
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                CVC Number:
+                                                        </text>
+                                                            {" "} {data.cvc}
+                                                        </Message.Item>
+                                                    </Container>
+                                                    <Container>
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                Card Number:
+                                                        </text>
+                                                            {" "}  {data.cardNumber}
+                                                        </Message.Item>
+                                                    </Container>
 
-                                                <Container>
-                                                    <Message.Item>
-
-                                                        Date: {data.date}
-                                                    </Message.Item>
-                                                </Container>
-                                                {/* <Container>
-                                                    <Message.Item>
+                                                    <Container>
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                Date:
+                                                        </text>
+                                                            {" "}  {data.date}
+                                                        </Message.Item>
+                                                    </Container>
+                                                    {/* <Container>
+                                                
 
                                                         User ID: {data.user}
-                                                    </Message.Item>
+                                                    
                                                 </Container> */}
-                                                <Container>
-                                                    <Message.Item>
+                                                    < Container  >
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                Rent For One Bed:
+                                                        </text>
+                                                            <text style={{ color: "blue", fontWeight: "bold" }}>
 
-                                                        Rent For One Bed: {data.rent1}
-                                                    </Message.Item>
-                                                </Container>
+                                                                {" "}   {data.rent1}
+                                                            </text>
 
+                                                        </Message.Item>
+                                                    </Container>
 
+                                                </Message>
 
                                             </Card.Content>
 
@@ -102,14 +132,19 @@ class PaymentDetail extends Component {
 
                                 )
                                 :
-                                null
+                                <Container>
+                                    <Message.Item>
+
+                                        Connection Failed
+                                </Message.Item>
+                                </Container>
 
                         }
 
 
 
                     </Grid.Row>
-                </Grid>
+                </Grid >
 
                 <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10 }}>
                     Utility Payment Details
@@ -123,62 +158,99 @@ class PaymentDetail extends Component {
                                 this.props.utilityPaymentList.map((data, index) =>
 
                                     <Grid.Column key={index}>
-                                        <Card >
+                                        <Card
 
-                                            <Card.Content style={{ backgroundColor: '#dfdada', padding: 30, fontWeight: 'bold' }}>
+                                            style={{
+                                                boxShadow: '0 10px 15px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.25)'
+                                            }}
+                                        >
 
-                                                <Container>
-                                                    <Message.Item>
+                                            <Card.Content style={{ backgroundColor: '#f6f6f6', padding: 30 }}>
+                                                <Message>
+                                                <Header as='h4' style={{ color: "#000" }}>
+                                                        Rent For Water Bill
+                                            <Container style={{ fontSize: 10, fontStyle: 'italic' }}>
 
-                                                        User Name: {data.name}
-                                                    </Message.Item>
-                                                </Container>
-                                                <Container>
-                                                    <Message.Item>
+                                                            <text >( Saudi Riyal )</text>
+                                                        </Container>
+                                                    </Header>
 
-                                                        Card Number: {data.cardNumber}
-                                                    </Message.Item>
-                                                </Container>
-                                                <Container>
-                                                    <Message.Item>
+                                                    <Divider />
+                                                    <Container>
+                                                        <Message.Item>
 
-                                                        CVC Number: {data.cvc}
-                                                    </Message.Item>
-                                                </Container>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                User Name:
+                                                        </text>
+                                                            {" "} {data.name}
+                                                        </Message.Item>
+                                                    </Container>
+                                                    <Container>
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                Card Number:
+                                                    </text>
+                                                            {" "}  {data.cardNumber}
+                                                        </Message.Item>
+                                                    </Container>
+                                                    <Container>
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+                                                                CVC Number:
+                                                    </text>
+                                                            {" "} {data.cvc}
 
-                                                <Container>
-                                                    <Message.Item>
+                                                        </Message.Item>
+                                                    </Container>
 
-                                                        Date: {data.date}
-                                                    </Message.Item>
-                                                </Container>
+                                                    <Container>
+                                                        <Message.Item>
+                                                            <text style={{ fontWeight: 'bold' }}>
+
+                                                                Date:
+                                                    </text>
+                                                            {" "} {data.date}
+
+                                                        </Message.Item>
+                                                    </Container>
 
 
-                                                <Container>
+                                                    {/* <Container>
                                                     <Message.Item>
 
                                                         User Id: {data.user}
                                                     </Message.Item>
-                                                </Container>
-                                                <Container>
+                                                </Container> */}
+                                                    <Container>
+                                                        <Message.Item>
+                                                        <text style={{ fontWeight: 'bold' }}>
+
+                                                            status : 
+                                                            </text>
+                                                          {" "}  {data.paid}
+                                                        </Message.Item>
+                                                    </Container>
+                                                    {/* <Container>
                                                     <Message.Item>
 
-                                                        status : {data.paid}
+                                                        Bill Id : {data.id}
                                                     </Message.Item>
-                                                </Container>
+                                                </Container> */}
 
-                                                <Container >
-                                                    <Message.Item
+                                                    <Container >
+                                                        <Message.Item>
 
-                                                    >
+                                                        <text style={{ fontWeight: 'bold' }}>
 
-                                                        Payment:
-                                                        <text style={{ color: 'green' }}>
-
-                                                            {data.payment}
+                                                            Payment:
                                                         </text>
-                                                    </Message.Item>
-                                                </Container>
+                                                        <text style={{ color: 'green', fontFamily: 'Courier New', fontStyle: "italic" , fontWeight:'bold'}}>
+
+                                                            {" "}    {data.payment.toUpperCase()}
+                                                            </text>
+                                                        </Message.Item>
+                                                    </Container>
+                                                </Message>
 
 
                                             </Card.Content>
@@ -191,7 +263,7 @@ class PaymentDetail extends Component {
                                 <Container>
                                     <Message.Item>
 
-                                        no data found
+                                        Connection Failed
                                 </Message.Item>
                                 </Container>
 
@@ -203,7 +275,7 @@ class PaymentDetail extends Component {
                 </Grid>
 
 
-                <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10 }}>
+                {/* <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10 }}>
                     All Utility Bills
                 </Header>
                 <Divider inverted />
@@ -249,51 +321,46 @@ class PaymentDetail extends Component {
                                                 <Container>
                                                     <Message.Item>
 
-                                                        User Name:   { data.name}
+                                                        User Name:   {data.name}
                                                     </Message.Item>
                                                 </Container>
                                                 <Container>
                                                     <Message.Item>
 
-                                                        User Email:   { data.email}
+                                                        User Email:   {data.email}
                                                     </Message.Item>
                                                 </Container>
-                                              
-
-
                                                 {
-                                                    this.props.utilityPaymentList !== null ?
-                                                        this.props.utilityPaymentList.map((item) =>
-                                                            ( item.user === data.userId) ?
-                                                                <Container>
-                                                                    <Message.Item>
-                                                                        Payment:
-                                                                        <text style={{ color: 'green' }}>
 
-                                                                            {item.payment}
-                                                                        </text>
-                                                                    </Message.Item>
-                                                                </Container>
-                                                               :
-                                                               
-                                                              <Container>
-                                                               <Message.Item>
-                                                                   
-                                                               <text style={{ color: 'red' }}>
-   
-                                                               Payment:    { data.paid}
-                                                               </text>
-                                                               </Message.Item>
-                                                           </Container>
-                                                        )
-                                                        :null
-                                                        
+                                                    this.state.Bill.map((item) => 
+                                                        (item === data.id) ?
+                                                            <Container>
+                                                                <Message.Item>
+
+                                                                    Payment:
+                                                        <text style={{ color: 'green' }}>
+
+                                                                        {this.state.payment}
+                                                                    </text>
+                                                                </Message.Item>
+                                                            </Container>
+                                                            :
+                                                            <Container>
+                                                                <Message.Item>
+
+                                                                    Payment:
+                                                        <text style={{ color: 'red' }}>
+
+                                                                        {this.state.pending}
+                                                                    </text>
+                                                                </Message.Item>
+                                                            </Container>
+                                                   )
+
                                                 }
+                                                
+                                                 </Card.Content>
 
-
-
-
-                                            </Card.Content>
 
                                         </Card>
                                     </Grid.Column>
@@ -305,18 +372,21 @@ class PaymentDetail extends Component {
                         }
 
                     </Grid.Row>
-                </Grid>
+                </Grid> */}
 
 
 
-            </div>
+
+
+            </div >
         )
     }
 }
 
 
 function mapStateToProps(state) {
-    // console.log("All  USEROBJECT**", state.reducer.INCOME) //user payment
+    console.log("All  paymentDetail**", state.reducer.utilityPaymentList) //user payment
+    console.log("All  BIllDetail**", state.reducer.Bill) //user bill
     return {
         userListComponent: state.reducer.userList,
         paymentDetail: state.reducer.paymentDetail,

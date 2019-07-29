@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
     Header, Divider, Card, Icon, Grid,
     Text, CardContent, CardDescription,
-    Input, Container, Label, Dropdown, Button, Segment
+    Input, Container, Label, Dropdown, Button, Segment, Form, TextArea, Message
 }
     from 'semantic-ui-react';
 import { createNotificationAction, GetSignUpUser, createBillAction } from '../../store/action'
@@ -110,8 +110,8 @@ class Bill extends Component {
 
         return (
             <div>
-                <Header as='h1' style={{ paddingTop: 40, paddingLeft: 10 }}>
-                    Select user
+                <Header as='h1' style={{ paddingTop: 60, paddingLeft: 10 }}>
+                Send Bill to User
                 </Header>
 
                 <Divider inverted />
@@ -124,9 +124,10 @@ class Bill extends Component {
                                     <Grid.Column key={index}>
 
 
-                                        <Card >
+                                        <Card 
+                                        style={{boxShadow: '0 8px 11px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.15)'}} >
 
-                                            <Card.Content style={{ backgroundColor: "#dfdada", padding: 20, fontWeight: 'bold', }}>
+                                            <Card.Content style={{ backgroundColor: "#f6f6f6", padding: 20, fontWeight: 'bold', }}>
                                                 <Header as='h1' style={{ color: "#000" }}>{data.name}
                                                 </Header>
                                                 {/* <Container>{data.email}</Container> */}
@@ -134,7 +135,8 @@ class Bill extends Component {
                                             </Card.Content>
                                         </Card>
                                         <Button primary onClick={this.deleteRow.bind(this, data.uid , data.name, data.email)}>
-                                            Add Bill</Button>
+                                            Add Bill
+                                        </Button>
                                         {/* </Button> */}
 
 
@@ -144,7 +146,12 @@ class Bill extends Component {
 
 
                                 )
-                                : null
+                                : <Container>
+                                <Message.Item>
+
+                                Connection Failed
+                            </Message.Item>
+                            </Container>
                         }
                     </Grid.Row>
                 </Grid>
@@ -166,7 +173,9 @@ class Bill extends Component {
                                                         User information
                                                  </Header>
                                                     <Divider clearing />
-                                                    <Grid  >
+                                                    <Grid 
+                                                    // style={{boxShadow: '0 8px 11px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.15)'}} 
+                                                    >
                                                         <Grid.Column>
 
                                                             <h4>
@@ -190,14 +199,15 @@ class Bill extends Component {
                                     })
                                 }
                                 <Grid.Column>
-                                    <Card>
+                                    <Card
+                                    style={{boxShadow: '0 8px 11px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.15)'}} >
                                         <Label>
                                             Enter Heading
 
                             </Label>
 
                                         <div className="ui focus input">
-                                            <input type="text" placeholder="Enter notification..."
+                                            <input type="text" placeholder="Enter Bill Heading..."
                                                 onChange={this.handleInputChange}
                                                 value={this.state.Notification1}
                                                 style={{ padding: 10 }}
@@ -205,38 +215,67 @@ class Bill extends Component {
                                             /></div>
 
                                     </Card>
-                                    <Card>
+                                             <Divider />
+                                    
+                                    <Card
+                                    style={{boxShadow: '0 8px 11px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.15)'}} >
 
                                         <Label>Enter Content</Label>
 
-                                        <div className="ui focus input">
-                                            <input type="text" placeholder=" Enter notification..."
+                                        {/* <div className="ui focus input">
+                                            <input type="text" placeholder=" Enter Notification..."
                                                 onChange={this.handleInputChange1}
                                                 value={this.state.Notification2}
 
-                                                style={{ padding: 10 }} /></div>
+                                                style={{ padding: 10 }} /></div> */}
+
+                                <Form>
+                                 <TextArea placeholder='Enter Bill Detail...'
+                                 onChange={this.handleInputChange1}
+                                 value={this.state.Notification2}
+
+                                 style={{ padding: 10 }} />
+
+                                </Form>
                                     </Card>
-                                    <Card>
+                                    <Divider />
+                                    <Card
+                                    style={{boxShadow: '0 8px 11px 0 rgba(0, 0, 0, 0.4), 0 8px 22px 0 rgba(0, 0, 0, 0.15)'}} >
                                         <Label>Enter Detail</Label>
 
 
-                                        <div className="ui focus input">
+                                        {/* <div className="ui focus input">
                                             <input type="text" placeholder="Enter notification..."
                                                 onChange={this.handleInputChange2}
                                                 value={this.state.Notification3}
-                                                style={{ padding: 10 }} /></div>
+                                                style={{ padding: 10 }} /></div> */}
+
+<Form>
+                                 <TextArea placeholder='Enter Bill Detail...'
+                                  onChange={this.handleInputChange2}
+                                  value={this.state.Notification3}
+                                  style={{ padding: 10 }} />
+
+                                </Form>
 
                                     </Card>
+                                    
 
 
-
+{/* 
                                     <div>
                                         <button className="ui primary button"
                                             style={{ padding: 10 }}
                                             onClick={this.submit}
                                         >Submit</button>
 
-                                    </div>
+                                    </div> */}
+                                    <Button primary 
+                                   style={{ padding: 10 , textAlign: "center"}}
+                                   onClick={this.submit}
+                                    >
+                                            Add Bill
+                                        </Button>
 
 
 
