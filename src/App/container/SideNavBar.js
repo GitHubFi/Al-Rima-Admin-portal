@@ -78,7 +78,7 @@ const Box = posed.div({
                 </Menu.Item> */}
                     <Box className="box">
 
-                        <Header as="h2" to="/" as={Link} style={{ marginTop: 15, color: "#fff", }}>
+                        <Header as="h2"  style={{ marginTop: 15, color: "#fff", }}>
                             <div>
                                 <Icon name="dashboard" style={{ margin: 10 }} />
                                 Admin Dashboard

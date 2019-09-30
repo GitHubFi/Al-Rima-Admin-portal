@@ -10,8 +10,8 @@ export default class TopNavBar extends Component {
         return (
             <Menu size='large'   fixed="top" >
                 <Menu.Menu >
-                    <Header as='h3' style={{ paddingTop: 10, paddingLeft: 260, paddingBottom:5 }}>
-                        <img src={require('../../assets/logoB.png')} alt="loading..." style={{ width: 100 }} />
+                    <Header as='h3' style={{ paddingTop: 0, paddingLeft: 260, paddingBottom:0}}>
+                        <img src={require('../../assets/logoA.png')} alt="loading..." style={{ width: 100, height:65 }} />
                     </Header>
                 </Menu.Menu>
                 <Menu.Menu position='right'>

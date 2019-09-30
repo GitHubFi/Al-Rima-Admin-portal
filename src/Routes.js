@@ -10,7 +10,14 @@ import PaymentDeatil from './App/components/PaymentDeatil';
 import Service from './App/components/Service';
 import Financial from './App/components/Financial.js'
 import Bill from './App/components/Bill.js'
-import Background from './assets/back5.jpg'
+import Background from './assets/back5.jpg';
+import AddOneBedRoom from './App/Add_Property/AddOneBedRoom.js'
+import AddTwoBedRoom from './App/Add_Property/AddTwoBedRoom.js'
+import AddThreeBedRoom from './App/Add_Property/AddThreeBedRoom.js'
+
+
+
+
 
 
 
@@ -20,8 +27,6 @@ import TopNavBar from './App/container/TopNavBar'
 import SideNavbar from './App/container/SideNavBar';
 export default class Routes extends Component {
     render() {
-        // const imageUrl = window.innerWidth >= 650 ? Background : bBackgroundack5;
-
         return (
             <Router>
                 <div>
@@ -34,51 +39,35 @@ export default class Routes extends Component {
                         </div>
                         <div style={{
                             flex: 4,
-                            // backgroundImage: "url(" + Background + ")",
-                            // height: "100%",
-                            // width: "100%",
-                            // backgroundSize: "cover",
-                            // // backgroundRepeat: 'no-repeat',
-                            // backgroundPosition: 'center',
                         }}
                         >
-                <div style={{
-                    backgroundImage: "url(" + Background + ")",
-                    height: "100%",
-                    width:"110%",
-                    marginTop:5,
-                    marginLeft:-22,
-                    // backgroundRepeat: "repeat-x",
-                    backgroundAttachment: "fixed"
+                            <div style={{
+                                backgroundImage: "url(" + Background + ")",
+                                height: "100%",
+                                width: "110%",
+                                marginTop: 5,
+                                marginLeft: -22,
+                                backgroundAttachment: "fixed"
 
-                    // display: 'inline-block',
-                    // paddingRight:"20%",
-                    // paddingRight:-20,
-                    // backgroundPosition: "center",
-                    // backgroundRepeat: "repeat-x",
-                    // backgroundRepeat:'repeat-y',
-                    // backgroundAttachment:"fixed",
-                    // backgroundRepeat:'no-repeat',
-            
-                    // backgroundSize: "cover"
-                    
-                    // backgroundSize: "cover",
-                    // backgroundRepeat: 'no-repeat',
-                    // backgroundPosition: 'center',
-                }}
-                >
-                    
-                            <Route exact path="/" component={Main} />
-                            <Route path="/Alluser" component={Alluser} />
-                            <Route path="/addProduct" component={AddProduct} />
-                            <Route path="/Notification" component={Notification} />
-                            <Route path="/userServiceDetail" component={UserServiceDetail} />
-                            <Route path="/userQueries" component={UserQueries} />
-                            <Route path="/paymentdetail" component={PaymentDeatil} />
-                            <Route path="/service" component={Service} />
-                            <Route path="/Financial" component={Financial}></Route>
-                            <Route path="/Bill" component={Bill}></Route>
-                </div>
+                            }}
+                            >
+                                <Route exact path="/" component={Service} />
+                                <Route  path="/service" component={Service} />
+                                <Route path="/Alluser" component={Alluser} />
+                                <Route path="/addProduct" component={AddProduct} />
+                                <Route path="/Notification" component={Notification} />
+                                <Route path="/userServiceDetail" component={UserServiceDetail} />
+                                <Route path="/userQueries" component={UserQueries} />
+                                <Route path="/paymentdetail" component={PaymentDeatil} />
+                                <Route path="/Financial" component={Financial}></Route>
+                                <Route path="/Bill" component={Bill}></Route>
+                                <Route path="/AddOneBedRoom" component={AddOneBedRoom}></Route>
+                                <Route path="/AddTwoBedRoom" component={AddTwoBedRoom} />
+                                <Route path="/AddThreeBedRoom" component={AddThreeBedRoom} />
+
+
+
+                            </div>
 
 
 
@@ -86,7 +75,7 @@ export default class Routes extends Component {
 
                         </div>
                     </div>
-                    {/* <Navbar /> */}
+
                 </div>
             </Router>
         )
